@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+    <style>
+        body {
+            width:100%; /* Largura relativa do corpo */
+            margin: 0 auto; /* Centraliza o conteúdo na página */
+            background-color: #212529;
+            color: white;
+        }
+
+        /* Adicionando estilos específicos para telas pequenas */
+        @media (max-width: 768px) {
+            body {
+                width: 100%; /* Largura total para telas pequenas */
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Ecommerce</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>         
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav me-auto">
+                    <a class="nav-link active" aria-current="page" href="{{url_for('page_home')}}">Home</a>
+                    <a class="nav-link" href="{{url_for('page_product')}}">Products</a>
+                </div>
+                {% if current_user.is_authenticated %}
+                <div class="navbar-nav ms-auto">
+                    <a class="nav-link" style="color: rgb(44, 155, 81); font-weight: bold">
+                        <i class="fas fa-coins"></i>
+                        {{ current_user.formataValor}}                               
+                    </a>
+                    <a class="nav-link">Welcome, {{current_user.usuario}}</a>
+                    <a class="nav-link" href="{{url_for('page_logout')}}">Logout</a>
+                </div>
+
+                {% else %}
+                <div class="navbar-nav ms-auto">
+                    <a class="nav-link" href="{{url_for('page_login')}}">Login</a>
+                    <a class="nav-link" href="{{url_for('page_cadastro')}}">Register</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    {% with messages = get_flashed_messages(with_categories=true)  %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            {{message}}
+        </div>         
+        {% endfor %}
+        {% endif %} 
+    {% endwith %} 
+    {% block conteudo %}
+
+    {% endblock %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/6471dd45bd.js" crossorigin="anonymous"></script>
+</body>
+</html>

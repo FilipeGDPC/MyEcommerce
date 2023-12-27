@@ -1,0 +1,49 @@
+{% extends 'base.html' %} 
+
+{% block titulo %}
+   Página de Login
+{% endblock %}
+
+{% block conteudo %}
+   <body class="text-center">
+    <div class="container">
+        <img class="mb-4" src="https://images.freeimages.com/clg/istock/previews/1065/106529013-user-login-or-authenticate-icon-vector.jpg" alt="Login Icon" style="width: 150px; margin-top: 50px">
+        <h1 class="h3 mb-3 font-weight-normal" style="color: #e6eaee;  font-family: 'Poppins', 'sans-serif'">
+            Please, Log in
+        </h1><hr>
+        
+        <form method="post" class="form-signin" style="color: #f5f7f8; max-width: 400px; margin: auto;  margin-top: 20px;">
+            {{ form.hidden_tag() }}
+
+            <label for="{{ form.usuario.id }}" class="visually-hidden">{{ form.usuario.label }}</label>
+            {{ form.usuario(class='form-control', placeholder="Inform the Username", required=true) }}
+            <hr>
+
+            <label for="{{ form.senha.id }}" class="visually-hidden" >{{ form.senha.label }}</label>
+            {{ form.senha(class='form-control', placeholder="Inform the Password", required=true) }}
+            <hr>
+            
+            <div class="d-grid mt-3">
+                {{ form.submit(class="btn btn-lg btn-success btn-glow", style="background-color: #28a745; border-color: #28a745;") }}
+            </div>
+
+            <div class="mt-3">
+                <a class="btn btn-sm btn-secondary" href="{{ url_for('page_cadastro') }}" style="background-color: #6c757d; border-color: #6c757d; margin-top: 17px;">Register here!</a>
+            </div>
+        </form>
+    </div>
+
+    <style>
+        /* Efeito de brilho */
+        .btn-glow {
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        .btn-glow:hover {
+            box-shadow: 0 0 20px 0 #28a745;
+        }
+    </style>
+
+   </body>
+{% endblock %}
+

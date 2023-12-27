@@ -1,0 +1,35 @@
+<style>
+    .modal-content{
+        background-color: #212121;
+    }
+</style>
+
+<!-- Modal Venda-->
+<div class="modal fade" id="exampleModalVenda-{{ dono_item.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{dono_item.nome}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <form method="POST">
+            {{ venda_form.hidden_tag() }}
+            <h4>
+              Would you like to sell the product {{dono_item.nome}} for $ {{dono_item.preco}}?
+            </h4>
+            <br>
+            <h6>
+              Click on "Buy Product" if you want to buy the product
+            </h6>
+            <br>
+            <input id="venda_produto" name="venda_produto" type="hidden" value="{{dono_item.nome}}">
+              {{venda_form.submit(class="btn btn-outline-danger btn-block")}}
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
