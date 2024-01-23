@@ -1,9 +1,9 @@
-E-commerce Buy & Sell Platform em Flask
+### E-commerce Buy & Sell Platform em Flask
 
 Este é um projeto de aplicativo web de e-commerce construído em Flask, proporcionando uma plataforma fácil e intuitiva para compra e venda de produtos diversos. Os usuários podem se cadastrar, fazer login, listar produtos para venda e explorar itens disponíveis para compra. Este guia oferece informações sobre a instalação, configuração e uso deste aplicativo em Flask.
 
 
-Funcionalidades Principais
+## Funcionalidades Principais
 -Registro de Usuário:
 
 -Acesse /register para criar uma nova conta de usuário.
@@ -23,7 +23,7 @@ Painel do Usuário:
 
 -Acesse /dashboard para visualizar e gerenciar suas compras e vendas.
 
-Tecnologias Utilizadas
+## Tecnologias Utilizadas
 -Python: Linguagem de programação utilizada para o desenvolvimento do backend.
 
 -Flask: Framework web em Python para construção rápida de aplicativos web.
